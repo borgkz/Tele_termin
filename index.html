@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Termin maker</title>
+		<link rel="stylesheet" href="app.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body>
+		<div class="container">
+			<div id="areaA"></div>
+			<div class="item" id="areaB">
+				<pre>Please select data below</pre>
+				<span>Category:</span>
+				<select class="">
+					<option class="option" value="">Werkstadt</option>
+					<option class="option" value="">Dantist</option>
+				</select>
+				<span>Date:</span>
+				<input placeholder="data" type="date" />
+				<span>Slots:</span>
+				<span>
+					<input type="radio" class="radioItem" id="slot1" name="slot" />
+					<label for="slot1">10:00</label>
+				</span>
+				<span>
+					<input type="radio" class="radioItem" id="slot2" name="slot" />
+					<label for="slot2">10:15</label>
+				</span>
+				<span>
+					<input type="radio" class="radioItem" id="slot3" name="slot" />
+					<label for="slot3">10:30</label>
+				</span>
+				<span class="mb15"></span>
+				<button class="btn" id="btn">Send</button>
+			</div>
+		</div>
+
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	</body>
+</html>

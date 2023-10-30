@@ -1,0 +1,64 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	color: black;
+	background: white;
+}
+
+.container {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-columns: 10px auto 10px;
+}
+#areaB {
+	display: grid;
+	text-align: left;
+	font-family: monospace;
+	font-weight: 200;
+	font-stretch: normal;
+}
+select,
+input {
+	margin-bottom: 15px;
+	height: 32px;
+}
+label {
+	vertical-align: top;
+}
+.mb15 {
+	margin-bottom: 15px;
+}
+.radioItem {
+	margin: 0 0 0 10px !important;
+	height: 24px !important;
+	width: 24px !important;
+}
+.option * {
+	height: 32px;
+}
+.item {
+	text-align: center;
+	border: 10px black;
+	border-radius: 1%;
+	background-color: whitesmoke;
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	border: none;
+	background: rgb(248, 168, 24);
+	border-radius: 10px;
+	color: wheat;
+	text-transform: uppercase;
+	font-weight: 600;
+	transition: background 0.2s linear;
+	height: 48px;
+}
+
+.btn:hover {
+	background: burlywood;
+	cursor: pointer;
+}
