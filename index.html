@@ -5,11 +5,13 @@
 		<link rel="stylesheet" href="app.css" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<div id="areaA"></div>
 			<div class="item" id="areaB">
+				<div id="usercard"></div>
 				<pre>Please select data below</pre>
 				<span>Category:</span>
 				<select class="">
@@ -32,10 +34,43 @@
 					<label for="slot3">10:30</label>
 				</span>
 				<span class="mb15"></span>
-				<button class="btn" id="btn">Send</button>
+				<button class="button" id="btn">Send</button>
 			</div>
 		</div>
 
-		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script>
+			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+			tg.expand(); //расширяем на все окно
+
+			tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
+			tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+			tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+			tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+			tg.MainButton.setParams({ color: "#143F6B" }); //так изменяются все параметры
+
+			Telegram.WebApp.onEvent("mainButtonClicked", function () {
+				tg.sendData("some string that we need to send");
+				//при клике на основную кнопку отправляем данные в строковом виде
+			});
+
+			let usercard = document.getElementById("usercard"); //получаем блок usercard
+
+			let profName = document.createElement("p"); //создаем параграф
+			profName.innerText = `${tg.initDataUnsafe.user.first_name}
+   ${tg.initDataUnsafe.user.last_name}
+   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+			//выдем имя, "фамилию", через тире username и код языка
+			usercard.appendChild(profName); //добавляем
+
+			let userid = document.createElement("p"); //создаем еще параграф
+			userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+			usercard.appendChild(userid); //добавляем
+
+			//работает только в attachment menu
+			// let pic = document.createElement('img'); //создаем img
+			// pic.src = tg.initDataUnsafe.user.photo_url; //задаём src
+			// usercard.appendChild(pic); //добавляем элемент в карточку
+		</script>
 	</body>
 </html>
