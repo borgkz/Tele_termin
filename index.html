@@ -81,11 +81,10 @@
 			tg.MainButton.show();
 
 			Telegram.WebApp.onEvent("mainButtonClicked", function () {
-				alert("It is alive!!!!");
-				tg.sendData("Appointment is created!");
-				tg.sendData("Data: " + document.getElementById("datePicker").value);
 				tg.sendData(
-					"Time: " + document.querySelector("input[type='radio']:checked").value
+					document.getElementById("datePicker").value +
+						"#" +
+						document.querySelector("input[type='radio']:checked").value
 				);
 			});
 
