@@ -72,9 +72,7 @@
 			});
 
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
 			tg.expand(); //расширяем на все окно
-
 			tg.MainButton.text = "Create"; //изменяем текст кнопки
 			tg.MainButton.setText("Create"); //изменяем текст кнопки иначе
 			tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
@@ -83,6 +81,7 @@
 			tg.MainButton.show();
 
 			Telegram.WebApp.onEvent("mainButtonClicked", function () {
+				alert("It is alive!!!!");
 				tg.sendData("Appointment is created!");
 				tg.sendData("Data: " + document.getElementById("datePicker").value);
 				tg.sendData(
