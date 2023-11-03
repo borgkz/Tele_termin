@@ -19,18 +19,36 @@
 					<option class="option" value="">Dantist</option>
 				</select>
 				<span>Date:</span>
-				<input placeholder="data" type="date" />
+				<input placeholder="data" type="date" name="somedate" id="datePicker" />
 				<span>Slots:</span>
 				<span>
-					<input type="radio" class="radioItem" id="slot1" name="slot" />
+					<input
+						type="radio"
+						class="radioItem"
+						value="10:00"
+						id="slot1"
+						name="slot"
+					/>
 					<label for="slot1">10:00</label>
 				</span>
 				<span>
-					<input type="radio" class="radioItem" id="slot2" name="slot" />
+					<input
+						type="radio"
+						class="radioItem"
+						value="10:15"
+						id="slot2"
+						name="slot"
+					/>
 					<label for="slot2">10:15</label>
 				</span>
 				<span>
-					<input type="radio" class="radioItem" id="slot3" name="slot" />
+					<input
+						type="radio"
+						class="radioItem"
+						value="10:30"
+						id="slot3"
+						name="slot"
+					/>
 					<label for="slot3">10:30</label>
 				</span>
 				<span class="mb15"></span>
@@ -39,19 +57,35 @@
 		</div>
 
 		<script>
+			document.getElementById("datePicker").valueAsDate = new Date();
+			var today = new Date().toISOString().split("T")[0];
+			document.getElementById("datePicker").setAttribute("min", today);
+
+			document.getElementById("btn").addEventListener("click", function () {
+				console.log("Data: " + document.getElementById("datePicker").value);
+				console.log(
+					"Time: " + document.querySelector("input[type='radio']:checked").value
+				);
+				return true;
+				tg.sendData("Appointment is created!");
+			});
+
 			let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 
 			tg.expand(); //расширяем на все окно
 
-			tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-			tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+			tg.MainButton.text = "Create"; //изменяем текст кнопки
+			tg.MainButton.setText("Create"); //изменяем текст кнопки иначе
 			tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
 			tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
 			tg.MainButton.setParams({ color: "#143F6B" }); //так изменяются все параметры
 
 			Telegram.WebApp.onEvent("mainButtonClicked", function () {
-				tg.sendData("some string that we need to send");
-				//при клике на основную кнопку отправляем данные в строковом виде
+				tg.sendData("Appointment is created!");
+				tg.sendData("Data: " + document.getElementById("datePicker").value);
+				tg.sendData(
+					"Time: " + document.querySelector("input[type='radio']:checked").value
+				);
 			});
 
 			let usercard = document.getElementById("usercard"); //получаем блок usercard
@@ -61,7 +95,6 @@
             ${tg.initDataUnsafe.user.first_name}
             ${tg.initDataUnsafe.user.last_name}
             ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-			//выдем имя, "фамилию", через тире username и код языка
 			usercard.appendChild(profName); //добавляем
 
 			let userid = document.createElement("p"); //создаем еще параграф
