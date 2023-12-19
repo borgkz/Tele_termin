@@ -47,16 +47,31 @@ body {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 .v-menu {
-	height: 25px;
-	width: 95%;
+	width: 100%;
+	display: none;
+	flex-direction: row;
+	justify-content: stretch;
+	flex-basis: 32px;
+	margin-top: 5px;
+	padding: 2px 5px;
+	text-align: center;
+	background-image: url("./img/img3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.v-menu-item {
 	cursor: pointer;
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.4);
 	border-radius: 5px;
-	margin: 5px 15px 0 15px;
-	padding-left: 10px;
-	padding-top: 2px;
-	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	width: 100px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 5px 0;	
+	background-color: rgba(255, 255, 255, 0.7);
+
 }
 .title {
 	height: 100%;
@@ -161,6 +176,6 @@ input:checked + .card .description {
 		margin-left: 0px;
 	}
 	.v-menu {
-		display: block;
+		display: flex;
 	}
 }
